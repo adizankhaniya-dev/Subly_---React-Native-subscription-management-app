@@ -1,34 +1,65 @@
+import ListHeading from "@/components/ListHeading";
+import UpComingSubscription from "@/components/UpComingSubscription";
+import {
+  HOME_BALANCE,
+  HOME_USER,
+  UPCOMING_SUBSCRIPTIONS,
+} from "@/constants/data";
+import { icons } from "@/constants/icon";
+import images from "@/constants/images";
 import "@/global.css";
-import { Link } from "expo-router";
+import { formatCurrency } from "@/lib/utils";
+import dayjs from "dayjs";
 import { styled } from "nativewind";
-import { Text } from "react-native";
+import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 
 const SafeAreaView = styled(RNSafeAreaView);
 export default function App() {
   return (
-    <SafeAreaView className="flex-1  items-center justify-center bg-background">
-      <Text className="text-3xl font-sans-extrabold font-bold text-success">
-        Welcome to Nativewind!
-      </Text>
-      <Link href={"/Onboarding"} className="bg-black text-white mt-4 px-3 py-3">
-        {" "}
-        GO to OnBoarding
-      </Link>
-      <Link
-        href={"/(auth)/Signin"}
-        className="bg-black text-white mt-4 px-3 py-3"
-      >
-        {" "}
-        Sign In
-      </Link>
-      <Link
-        href={"/(auth)/Signup"}
-        className="bg-black text-white mt-4 px-3 py-3"
-      >
-        {" "}
-        Sign Up
-      </Link>
+    <SafeAreaView className="flex-1  bg-background p-5">
+      <View className="home-header">
+        <View className="home-user">
+          <Image source={images.avatar} className="home-avatar" />
+          <Text className="home-user-name">{HOME_USER.name}</Text>
+        </View>
+        <TouchableOpacity className="home-add-btn" activeOpacity={0.7}>
+          <Image
+            source={icons.add}
+            className="home-add-icon"
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
+      </View>
+
+      <View className="home-balance-card">
+        <Text className="home-balance-label">Balance</Text>
+        <View className="home-balance-row">
+          <Text className="home-balance-amount">
+            {formatCurrency(HOME_BALANCE.amount)}
+          </Text>
+          <Text className="home-balance-date">
+            {dayjs(HOME_BALANCE.nextRenewalDate).format("MM/DD")}
+          </Text>
+        </View>
+      </View>
+
+      <View>
+        <ListHeading title="Upcoming" />
+        <FlatList
+          data={UPCOMING_SUBSCRIPTIONS}
+          renderItem={({ item }) => (
+            <UpComingSubscription data={item} />
+          )}
+          keyExtractor={(item) => item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        />
+      </View>
+
+      <View>
+        <ListHeading title="All Subscriptions" />
+      </View>
     </SafeAreaView>
   );
 }

@@ -71,15 +71,19 @@
     }
 
     .home-avatar {
-        @apply size-16 rounded-full;
+        @apply size-[50px] rounded-full;
     }
 
     .home-user-name {
-        @apply ml-4 text-2xl font-sans-bold text-primary;
+        @apply ml-4 text-[20px] font-sans-bold leading-[22px] tracking-[-0.4px] text-primary;
+    }
+
+    .home-add-btn {
+        @apply size-[50px] items-center justify-center rounded-full border border-[#C6BFA2];
     }
 
     .home-add-icon {
-        @apply size-12;
+        @apply size-6;
     }
 
     .home-balance-card {
@@ -87,7 +91,7 @@
     }
 
     .home-balance-label {
-        @apply text-xl font-sans-semibold text-white/80;
+        @apply text-[20px] font-sans-semibold leading-[20px] tracking-[-0.4px] text-white;
     }
 
     .home-balance-row {
@@ -95,11 +99,11 @@
     }
 
     .home-balance-amount {
-        @apply text-4xl font-sans-extrabold text-white;
+        @apply text-[36px] font-sans-bold leading-[36px] tracking-[-1.44px] text-white;
     }
 
     .home-balance-date {
-        @apply text-xl font-sans-medium text-white;
+        @apply text-[20px] font-sans-semibold leading-[20px] tracking-[-0.4px] text-white;
     }
 
     .list-head {
@@ -107,7 +111,7 @@
     }
 
     .list-title {
-        @apply text-2xl font-sans-bold text-primary;
+        @apply text-[20px] font-sans-bold leading-[22px] tracking-[-0.4px] text-primary;
     }
 
     .list-action {
@@ -119,27 +123,31 @@
     }
 
     .upcoming-card {
-        @apply mr-4 w-44 rounded-2xl border border-black/10 bg-background p-4;
+        @apply mr-4 w-[180px] rounded-[16px] border border-[#C6BFA2] bg-background px-[14px] py-5 gap-[14px];
     }
 
     .upcoming-row {
         @apply flex-row items-center gap-3;
     }
 
+    .upcoming-icon-wrap {
+        @apply size-[50px] items-center justify-center rounded-[10px] bg-[#F6ECC9];
+    }
+
     .upcoming-icon {
-        @apply size-14;
+        @apply size-6;
     }
 
     .upcoming-price {
-        @apply text-lg font-sans-bold text-primary;
+        @apply text-[18px] font-sans-bold leading-[18px] tracking-[-0.36px] text-primary;
     }
 
     .upcoming-meta {
-        @apply text-sm font-sans-semibold text-muted-foreground;
+        @apply text-[14px] font-sans-semibold leading-[14px] tracking-[-0.28px] text-[#435875];
     }
 
     .upcoming-name {
-        @apply mt-2 text-lg font-sans-bold text-primary;
+        @apply text-[18px] font-sans-bold leading-[20px] tracking-[-0.36px] text-primary;
     }
 
     .sub-card {
